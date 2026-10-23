@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBERTYPER // Free Typing Game Online & Speed Test Matrix</title>
+  <meta name="description" content="Play exciting free typing games online with CYBERTYPER. Improve your WPM, accuracy, and typing speed with sci-fi neon arcade typing tests and challenges.">
+  <meta name="keywords" content="typing game, typing speed test, space typing arcade, cybertyper, wpm benchmark, touch typing practice, falling words game, typing race bot, free online typing test">
+  <meta name="author" content="CYBERTYPER">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://typinggamex.github.io/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <meta name="theme-color" content="#0d0f18">
+
+  <!-- Font Preconnect to prevent text layout jumping -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://typinggamex.github.io/">
+  <meta property="og:title" content="CYBERTYPER // Free Typing Game Online & Speed Test">
+  <meta property="og:description" content="Level up your typing speed (WPM) with exciting neon sci-fi typing arcade games and real-time accuracy benchmarks.">
+  <meta property="og:image" content="https://arpitkx.github.io/image/og-preview.png">
+  <meta property="og:site_name" content="CYBERTYPER">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://typinggamex.github.io/">
+  <meta name="twitter:title" content="CYBERTYPER // Free Typing Game Online & Speed Test">
+  <meta name="twitter:description" content="Level up your typing speed (WPM) with exciting neon sci-fi typing arcade games and real-time accuracy benchmarks.">
+  <meta name="twitter:image" content="https://arpitkx.github.io/image/og-preview.png">
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="u2HCf_6VKyPAVWw0sn1yf_jrNx-6g6iIWCGSwuhIPbA" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CYBERTYPER - Free Online Typing Game",
+    "url": "https://typinggamex.github.io/",
+    "description": "Play high-octane neon cyber typing arcade games and speed tests. Push your typing speed (WPM), accuracy, and reflexes to lightspeed.",
+    "applicationCategory": "GameApplication",
+    "genre": "Typing Game",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "operatingSystem": "All"
+  }
+  </script>
+
+  <!-- Consolidated Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Inline critical layout stability & Card Image Styles -->
+  <style>
+    .site-header { min-height: 70px; }
+    .hero { min-height: 220px; }
+    .brand-icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+
+    /* Card Image Integration */
+    .game-card {
+      padding: 0 !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .card-thumb-wrap {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .card-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .game-card:hover .card-thumb-img {
+      transform: scale(1.06);
+      filter: brightness(1.1);
+    }
+    .overlay-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(13, 15, 24, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 2;
+    }
+    .card-body {
+      padding: 18px 20px 10px 20px;
+      flex-grow: 1;
+    }
+    .game-card .card-footer {
+      padding: 12px 20px 18px 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas Starfield -->
+  <canvas id="starsCanvas" style="position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; display: block;"></canvas>
+
+  <div class="container" style="position: relative; z-index: 2;">
+    <!-- Header -->
+    <header class="site-header">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <div class="brand-title">CYBERTYPER</div>
+          <div class="brand-subtitle">Space Typing Arcade</div>
+        </div>
+      </a>
+
+      <!-- Navigation Menu -->
+      <nav id="cyberMainNav" class="cyber-nav" aria-label="Main Navigation">
+        <div class="cyber-nav-item">
+          <a href="index.html" class="cyber-nav-link active" aria-current="page">Home</a>
+        </div>
+        <div class="cyber-nav-item cyber-dropdown" id="cyberGamesDropdown">
+          <button class="cyber-nav-link" id="cyberGamesTrigger" aria-expanded="false" aria-haspopup="true">
+            Games <span class="dropdown-arrow">▼</span>
+          </button>
+          <ul class="cyber-dropdown-menu" aria-label="Games Submenu">
+            <li class="cyber-dropdown-item"><a href="games/speed-test.html" class="cyber-dropdown-link">⚡ Speed Typing Test</a></li>
+            <li class="cyber-dropdown-item"><a href="games/falling-words.html" class="cyber-dropdown-link">🌧️ Falling Words</a></li>
+            <li class="cyber-dropdown-item"><a href="games/typing-race.html" class="cyber-dropdown-link">🏎️ Typing Race vs Bot</a></li>
+            <li class="cyber-dropdown-item"><a href="games/asteroid-game.html" class="cyber-dropdown-link">☄️ Falling Asteroids</a></li>
+          </ul>
+        </div>
+        <div class="cyber-nav-item">
+          <a href="pages/content.html" class="cyber-nav-link">News</a>
+        </div>
+        <div class="cyber-nav-item">
+          <a href="pages/about.html" class="cyber-nav-link">About</a>
+        </div>
+        <div class="cyber-nav-item">
+          <a href="pages/contact.html" class="cyber-nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Actions: Theme Toggle + Sound + Hamburger -->
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="sound-toggle-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+          <span id="themeIcon">☀️</span>
+        </button>
+        <button id="soundToggle" class="sound-toggle-btn" aria-label="Toggle Sound" title="Sound Mute/Unmute">
+          <span id="soundIcon">🔊</span>
+        </button>
+        <button id="cyberNavToggle" class="cyber-hamburger" aria-label="Toggle Menu" aria-expanded="false" aria-controls="cyberMainNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-badge">✦ Level Up Your WPM ✦</div>
+      <h1 class="hero-title">
+        Master The <span class="glow-cyan">Cyber Typing Game</span> <span class="glow-pink">Matrix</span>
+      </h1>
+      <p class="hero-desc">
+        Play exciting free typing games online. Test your speed, accuracy, and reflexes with our neon space typing arcade challenges.
+      </p>
+    </section>
+
+    <!-- 4 Game Cards Grid With Thumbnails -->
+    <main class="games-grid">
+      <!-- Card 1: Speed Typing Test -->
+      <a href="games/speed-test.html" class="game-card theme-cyan">
+        <div class="card-thumb-wrap">
+          <img src="./image/speed%20typing%20test.jpg" alt="Free Speed Typing Test Online" class="card-thumb-img" loading="lazy">
+          <span class="card-tag overlay-tag">Benchmark</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Speed Typing Test</h2>
+          <p class="card-desc">
+            Test your pure typing speed & accuracy with live character highlighting, dynamic WPM metrics, and detailed completion analytics.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-action-text">Launch Test <span>→</span></span>
+          <span class="card-meta">10+ Paragraphs</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Falling Words -->
+      <a href="games/falling-words.html" class="game-card theme-magenta">
+        <div class="card-thumb-wrap">
+          <img src="./image/falling%20word.jpg" alt="Falling Words Typing Game" class="card-thumb-img" loading="lazy">
+          <span class="card-tag overlay-tag">Arcade Rush</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Falling Words</h2>
+          <p class="card-desc">
+            Words descend from the digital sky! Type them before they crash at the bottom. Defend 3 lives as waves intensify.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-action-text">Play Arcade <span>→</span></span>
+          <span class="card-meta">3 Lives • High Score</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Typing Race vs Bot -->
+      <a href="games/typing-race.html" class="game-card theme-emerald">
+        <div class="card-thumb-wrap">
+          <img src="./image/typing%20race%20vs%20bot.jpg" alt="Typing Race Game vs AI Bot" class="card-thumb-img" loading="lazy">
+          <span class="card-tag overlay-tag">Versus Mode</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Typing Race vs Bot</h2>
+          <p class="card-desc">
+            Race bumper-to-bumper against a 40 WPM AI competitor. Execute rapid overtakes, cross the finish line, and top the leaderboard.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-action-text">Enter Race <span>→</span></span>
+          <span class="card-meta">AI Rival • Top 5 Board</span>
+        </div>
+      </a>
+
+      <!-- Card 4: Falling Asteroids -->
+      <a href="games/asteroid-game.html" class="game-card theme-gold">
+        <div class="card-thumb-wrap">
+          <img src="./image/asteroid%20game.jpg" alt="Falling Asteroids Space Typing Game" class="card-thumb-img" loading="lazy">
+          <span class="card-tag overlay-tag">Space Defense</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Falling Asteroids</h2>
+          <p class="card-desc">
+            Command your orbital defense ship. Obliterate incoming meteors with laser strikes, explosive particle shockwaves, and deep audio blasts.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-action-text">Defend Galaxy <span>→</span></span>
+          <span class="card-meta">Particles • Sci-Fi FX</span>
+        </div>
+      </a>
+    </main>
+
+    <!-- Features Strip -->
+    <div class="features-strip">
+      <div class="feature-box">
+        <div class="feature-icon">🔊</div>
+        <div>
+          <div class="feature-heading">Web Audio Synth</div>
+          <div class="feature-sub">Zero external sound files — pure zero-latency Web Audio API synthesis.</div>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">📱</div>
+        <div>
+          <div class="feature-heading">Mobile Responsive</div>
+          <div class="feature-sub">Optimized for keyboard power-users and touch screen inputs alike.</div>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">💾</div>
+        <div>
+          <div class="feature-heading">Local Persistence</div>
+          <div class="feature-sub">Sound preferences and race leaderboards saved in your browser.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial & Educational Section -->
+    <article class="content-article-section">
+      <h2>How CYBERTYPER Improves Your Typing Speed & Cognitive Reflexes</h2>
+      <p>
+        Typing is no longer just an administrative skill; it is the fundamental bridge between human thought and digital execution. Whether you are coding, authoring documents, or communicating across networks, having a typing benchmark above 70 Words Per Minute (WPM) saves hundreds of hours every year. CYBERTYPER combines gamification mechanics with precision analytics to make touch typing practice addictive, responsive, and measurable.
+      </p>
+
+      <div class="content-grid-2">
+        <div class="guide-card">
+          <h3>Standardized Net WPM Formulation</h3>
+          <p>
+            Many free typing apps only track gross character speed. CYBERTYPER calculates standard Net WPM by penalizing uncorrected errors over elapsed minutes. This ensures you train for real-world productivity rather than erratic bursts of inaccuracy.
+          </p>
+        </div>
+        <div class="guide-card">
+          <h3>Arcade Reaction Training</h3>
+          <p>
+            Games like Falling Words and Orbital Asteroids force your brain to eliminate visual search latency. By reacting to descending words before defensive barriers collapse, muscle memory transitions directly from sight to fingers without conscious mental pauses.
+          </p>
+        </div>
+      </div>
+
+      <h3>Essential Guidelines For Faster Touch Typing</h3>
+      <p>
+        To break past the 60 WPM plateau, prioritize ergonomic posture and consistent key discipline. Ensure your index fingers always return to the tactile bumps on the home row keys (F and J). Avoid glancing at the physical keyboard; relying on tactile feedback forces the motor cortex to build durable muscle memory. Practicing just 15 minutes every day across varied benchmark texts produces consistent improvements within weeks.
+      </p>
+    </article>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <ul class="footer-nav">
+        <li><a href="pages/content.html">News</a></li>
+        <li><a href="pages/help.html">Help</a></li>
+        <li><a href="pages/faq.html">FAQ</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/privacy.html">Privacy Policy</a></li>
+        <li><a href="pages/terms.html">Terms and Conditions</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 CYBERTYPER • Built with Modern Web Standards & Web Audio API</div>
+    </footer>
+  </div>
+
+  <!-- External App & Navigation Scripts -->
+  <script src="./js/app.js" defer></script>
+  <script src="./js/nav.js" defer></script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8769034899349607" crossorigin="anonymous"></script>
+
+  <!-- Self-Contained High-Visibility Stars Engine -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('starsCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      const STAR_COUNT = 160;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: Math.random() * 2 + 1,
+          speed: Math.random() * 0.6 + 0.2,
+          color: Math.random() > 0.4 ? '#00f0ff' : '#ff007f'
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < stars.length; i++) {
+          let s = stars[i];
+          s.y += s.speed;
+          if (s.y > canvas.height) {
+            s.y = 0;
+            s.x = Math.random() * canvas.width;
+          }
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = s.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = s.color;
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })();
+  </script>
+  <!-- Direct Standalone Theme & Sound Handler -->
+  <script>
+    (function() {
+      // 1. THEME TOGGLE HANDLER
+      const themeBtn = document.getElementById('themeToggleBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      
+      // Load saved theme preference
+      const savedTheme = localStorage.getItem('cyber_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      if (themeIcon) {
+        themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+      }
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('cyber_theme', newTheme);
+          if (themeIcon) {
+            themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+          }
+        });
+      }
+
+      // 2. SOUND TOGGLE HANDLER (Web Audio Synth Click Effect)
+      const soundBtn = document.getElementById('soundToggle');
+      const soundIcon = document.getElementById('soundIcon');
+      
+      let isMuted = localStorage.getItem('cyber_muted') === 'true';
+      function updateSoundUI() {
+        if (soundIcon) {
+          soundIcon.textContent = isMuted ? '🔇' : '🔊';
+        }
+        if (soundBtn) {
+          soundBtn.classList.toggle('muted', isMuted);
+        }
+      }
+      updateSoundUI();
+
+      // Simple Synth Beep on Click if unmuted
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      let audioCtx = null;
+
+      function playToggleBeep() {
+        if (isMuted) return;
+        try {
+          if (!audioCtx) audioCtx = new AudioContext();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08); // A5
+          
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+          
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } catch(err) {}
+      }
+
+      if (soundBtn) {
+        soundBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          isMuted = !isMuted;
+          localStorage.setItem('cyber_muted', isMuted);
+          updateSoundUI();
+          if (!isMuted) {
+            playToggleBeep();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
